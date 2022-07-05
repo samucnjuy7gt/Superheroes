@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.example.demo.model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -87,7 +87,7 @@ public class Superheroe implements Serializable{
 		return poder;
 	}
 
-	public void setPodere(Poder poder) {
+	public void setPoder(Poder poder) {
 		this.poder = poder;
 	}
 }

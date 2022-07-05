@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.example.demo.model;
 
 import java.io.Serializable;
 
@@ -6,15 +6,15 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class SuperheroeUniversoKey implements Serializable{
+public class SuperheroePoderKey implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "s_u_heroe_id")
+	@Column(name = "s_p_heroe_id")
 	private Integer heroeId;
 	
-	@Column(name = "s_u_universo_id")
-	private Integer universoId;
+	@Column(name = "s_p_poder_id")
+	private Integer poderId;
 
 	public Integer getHeroeId() {
 		return heroeId;
@@ -24,11 +24,11 @@ public class SuperheroeUniversoKey implements Serializable{
 		this.heroeId = heroeId;
 	}
 
-	public Integer getUniversoId() {
-		return universoId;
+	public Integer getPoderId() {
+		return poderId;
 	}
 
-	public void setUniversoId(Integer universoId) {
-		this.universoId = universoId;
+	public void setPoderId(Integer poderId) {
+		this.poderId = poderId;
 	}
 }
