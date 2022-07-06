@@ -4,12 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,13 +23,15 @@ public class Poder implements Serializable{
 	@Column(name = "nombre", nullable = false)
 	private String nombre;
 	
-	//Mapeo simple
-	//@Column(name = "poder_heroe_id")
-	//private Integer poderId;
+	public Poder() {
+		
+	}
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "poder_heroe_id")
-	private Superheroe superheroe;
+	public Poder(Integer id, String nombre) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+	}
 
 	public Integer getId() {
 		return id;
@@ -48,13 +47,5 @@ public class Poder implements Serializable{
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public Superheroe getSuperheroe() {
-		return superheroe;
-	}
-
-	public void setSuperheroes(Superheroe superheroe) {
-		this.superheroe = superheroe;
 	}
 }

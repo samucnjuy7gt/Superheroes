@@ -11,7 +11,7 @@ public interface UniversoServicio {
 	
 	Universo buscarUniverso(Integer id) throws ResourceNotFoundException;
 	
-	Universo crearUniverso(Universo universo);
+	Universo crearUniverso(Universo universo)throws ResourceNotFoundException;
 	
 	Universo actualizarUniverso(Integer id, Universo universo) throws ResourceNotFoundException;
 	

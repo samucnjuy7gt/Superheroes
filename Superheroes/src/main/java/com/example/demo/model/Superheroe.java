@@ -1,11 +1,11 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,21 +35,26 @@ public class Superheroe implements Serializable{
 	//@Column(name = "heroe_universo_id", nullable = false)
 	//private Integer heroe_universo_id
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name = "universo_id", nullable = false)
 	private Universo universo;
-	
-	//Mapeo plano
-	//@Column(name = "heroe_poder_id", nullable = false)
-	//private Integer poder
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "heroe_poder_id", nullable = false)
-	private Poder poder;
 	
 	@OneToMany()
 	@JoinColumn(name = "s_p_heroe_id")
 	private List<SuperheroePoder> poderes;
+	
+	public Superheroe() {
+		
+	}
+	
+	public Superheroe(Integer id, String nombre, boolean vivo, Universo universo) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.vivo = vivo;
+		this.universo = universo;
+		this.poderes = new ArrayList<>();
+	}
 
 	public Integer getId() {
 		return id;
@@ -83,11 +88,11 @@ public class Superheroe implements Serializable{
 		this.universo = universo;
 	}
 
-	public Poder getPoder() {
-		return poder;
+	public List<SuperheroePoder> getPoderes() {
+		return poderes;
 	}
 
-	public void setPoder(Poder poder) {
-		this.poder = poder;
+	public void addPoder(SuperheroePoder poder) {
+		poderes.add(poder);
 	}
 }

@@ -30,8 +30,18 @@ public class UniversoServicioImp implements UniversoServicio{
 	}
 
 	@Override
-	public Universo crearUniverso(Universo universo) {
-		return universoRepositorio.save(universo);
+	public Universo crearUniverso(Universo universo) throws ResourceNotFoundException {
+		boolean is = universoRepositorio.findById(universo.getId()).isPresent();
+		
+		Universo u;
+		if(is) {
+			u = actualizarUniverso(universo.getId(), universo);
+		}
+		else {
+			u = universoRepositorio.save(universo);
+		}
+		
+		return universoRepositorio.save(u);
 	}
 
 	@Override

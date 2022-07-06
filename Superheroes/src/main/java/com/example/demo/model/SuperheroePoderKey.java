@@ -15,6 +15,16 @@ public class SuperheroePoderKey implements Serializable{
 	
 	@Column(name = "s_p_poder_id")
 	private Integer poderId;
+	
+	public SuperheroePoderKey() {
+		
+	}
+	
+	public SuperheroePoderKey(Integer heroeId, Integer poderId) {
+		super();
+		this.heroeId = heroeId;
+		this.poderId = poderId;
+	}
 
 	public Integer getHeroeId() {
 		return heroeId;

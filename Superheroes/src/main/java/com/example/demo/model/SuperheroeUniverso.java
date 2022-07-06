@@ -3,7 +3,6 @@ package com.example.demo.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,13 +17,25 @@ public class SuperheroeUniverso implements Serializable{
 	@Id
 	private SuperheroeUniversoKey id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name = "s_u_heroe_id", nullable = false, insertable = false, updatable = false)
 	private Superheroe superheroe;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name = "s_u_universo_id", nullable = false, insertable = false, updatable = false)
 	private Universo universo;
+	
+	public SuperheroeUniverso() {
+		
+	}
+	
+	public SuperheroeUniverso(Superheroe superheroe, Universo universo) {
+		super();
+		this.superheroe = superheroe;
+		this.universo = universo;
+		
+		id = new SuperheroeUniversoKey(superheroe.getId(), universo.getId());
+	}
 
 	public SuperheroeUniversoKey getId() {
 		return id;

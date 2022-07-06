@@ -11,9 +11,9 @@ public interface PoderServicio {
 	
 	Poder buscarPoder(Integer id) throws ResourceNotFoundException;
 	
-	Poder crearPoder(Poder poder);
+	Poder crearPoder(Poder poder) throws ResourceNotFoundException;
 	
 	Poder actualizarPoder(Integer id, Poder poder) throws ResourceNotFoundException;
 	
-	void eliminarUniverso(Integer id) throws ResourceNotFoundException;
+	void eliminarPoder(Integer id) throws ResourceNotFoundException;
 }

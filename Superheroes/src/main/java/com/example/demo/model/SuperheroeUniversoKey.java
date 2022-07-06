@@ -15,6 +15,15 @@ public class SuperheroeUniversoKey implements Serializable{
 	
 	@Column(name = "s_u_universo_id")
 	private Integer universoId;
+	
+	public SuperheroeUniversoKey() {
+		
+	}
+	
+	public SuperheroeUniversoKey(Integer heroeId, Integer universoId) {
+		this.heroeId = heroeId;
+		this.universoId = universoId;
+	}
 
 	public Integer getHeroeId() {
 		return heroeId;
