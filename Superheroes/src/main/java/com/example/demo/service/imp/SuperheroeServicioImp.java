@@ -1,5 +1,6 @@
 package com.example.demo.service.imp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.Poder;
 import com.example.demo.model.Superheroe;
 import com.example.demo.model.SuperheroePoder;
+import com.example.demo.model.SuperheroePoderKey;
 import com.example.demo.model.SuperheroeUniverso;
 import com.example.demo.model.SuperheroeUniversoKey;
 import com.example.demo.repository.SuperheroeRepositorio;
@@ -118,6 +120,24 @@ public class SuperheroeServicioImp implements SuperheroeServicio{
 		
 		SuperheroeUniversoKey suk = new SuperheroeUniversoKey(superH.getId(), superH.getUniverso().getId());
 		sus.eliminarSuperheroeUniverso(suk);
+		
+		superH.getPoderes().forEach(p -> {
+			SuperheroePoderKey spk = new SuperheroePoderKey(superH.getId(), p.getPoder().getId());
+			try {
+				spc.eliminarSuperheroePoder(spk);
+			} catch (ResourceNotFoundException e) {
+				System.out.println(e.getMessage());
+			}
+		});
+		
+		//for(int i = 0; i < superH.getPoderes().size(); i++) {
+		//	spc.eliminarSuperheroePoder(superH.getPoderes().get(i).getId());
+		//}
+		
+		List<SuperheroePoder> l = new ArrayList<>();
+		
+		superH.setPoderes(l);
+		
 		
 		superheroeRepositorio.delete(superH);
 	}

@@ -67,11 +67,11 @@ public class SuperheroesApplication implements CommandLineRunner{
 		s2 = superheroeServicio.crearSuperheroe(s2, poderes2);
 		s3 = superheroeServicio.crearSuperheroe(s3, poderes3);
 		
-		System.out.println(superheroeServicio.buscarSuperheroe(1).getUniverso().getSuperheroes().size());
-		System.out.println(superheroeServicio.buscarSuperheroe(2).getUniverso().getSuperheroes().size());
-		System.out.println(superheroeServicio.buscarSuperheroe(3).getUniverso().getSuperheroes().size());
+		System.out.println(superheroeServicio.buscarSuperheroe(s1.getId()).getUniverso().getSuperheroes().size());
+		System.out.println(superheroeServicio.buscarSuperheroe(s2.getId()).getUniverso().getSuperheroes().size());
+		System.out.println(superheroeServicio.buscarSuperheroe(s3.getId()).getUniverso().getSuperheroes().size());
 		
-		//superheroeServicio.eliminarSuperheroe(s3.getId());
+		superheroeServicio.eliminarSuperheroe(s3.getId());
 
 		List<SuperheroeUniverso> superheroes = universoServicio.buscarUniverso(u1.getId()).getSuperheroes();
 		for(SuperheroeUniverso pAux: superheroes){

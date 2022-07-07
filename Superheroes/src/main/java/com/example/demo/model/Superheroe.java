@@ -91,6 +91,10 @@ public class Superheroe implements Serializable{
 	public List<SuperheroePoder> getPoderes() {
 		return poderes;
 	}
+	
+	public void setPoderes(List<SuperheroePoder> poderes) {
+		this.poderes = poderes;
+	}
 
 	public void addPoder(SuperheroePoder poder) {
 		poderes.add(poder);
