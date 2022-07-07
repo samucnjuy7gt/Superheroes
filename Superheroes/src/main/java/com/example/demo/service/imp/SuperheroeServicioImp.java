@@ -86,7 +86,7 @@ public class SuperheroeServicioImp implements SuperheroeServicio{
 	}
 	
 	@Override
-	public Superheroe actualizarSuperheroe(Integer id,Superheroe superheroe) throws ResourceNotFoundException{
+	public Superheroe actualizarSuperheroe(Integer id, Superheroe superheroe) throws ResourceNotFoundException{
 		//Implementacion Hibernate
 		//Superheroe superH = superheroeRepositorioHibernate.findById(id)
 				//.orElseThrow(() -> new ResourceNotFoundException(MENSAJE + id));
@@ -129,10 +129,6 @@ public class SuperheroeServicioImp implements SuperheroeServicio{
 				System.out.println(e.getMessage());
 			}
 		});
-		
-		//for(int i = 0; i < superH.getPoderes().size(); i++) {
-		//	spc.eliminarSuperheroePoder(superH.getPoderes().get(i).getId());
-		//}
 		
 		List<SuperheroePoder> l = new ArrayList<>();
 		

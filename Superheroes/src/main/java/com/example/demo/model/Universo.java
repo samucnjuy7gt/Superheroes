@@ -61,6 +61,10 @@ public class Universo implements Serializable{
 	public List<SuperheroeUniverso> getSuperheroes() {
 		return superheroes;
 	}
+	
+	public void setSuperheroes(List<SuperheroeUniverso> superheroes) {
+		this.superheroes = superheroes;
+	}
 
 	public void addSuperheroe(SuperheroeUniverso su) {
 		superheroes.add(su);
