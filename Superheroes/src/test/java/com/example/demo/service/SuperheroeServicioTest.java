@@ -23,7 +23,7 @@ import com.example.demo.repository.SuperheroeRepositorio;
 import com.example.demo.service.imp.SuperheroeServicioImp;
 
 @ExtendWith(MockitoExtension.class)
-public class SuperheroeServicioTest {
+class SuperheroeServicioTest {
 
 	@InjectMocks
 	SuperheroeServicioImp servicio;
@@ -52,8 +52,7 @@ public class SuperheroeServicioTest {
 		
 		List<Superheroe> currentResult = servicio.listarSuperheroes();
 		
-		assertThat(currentResult).isNotNull();
-		assertThat(currentResult).isNotEmpty();
+		assertThat(currentResult).isNotNull().isNotEmpty();
 	}
 	
 	@Test

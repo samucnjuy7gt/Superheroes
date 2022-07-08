@@ -21,7 +21,7 @@ import com.example.demo.repository.PoderRepositorio;
 import com.example.demo.service.imp.PoderServicioImp;
 
 @ExtendWith(MockitoExtension.class)
-public class PoderServicioTest {
+class PoderServicioTest {
 
 	@InjectMocks
 	PoderServicioImp servicio;
@@ -50,8 +50,8 @@ public class PoderServicioTest {
 		
 		List<Poder> currentResult = servicio.listarPoderes();
 		
-		assertThat(currentResult).isNotNull();
-		assertThat(currentResult).isNotEmpty();
+		assertThat(currentResult).isNotNull().isNotEmpty();
+
 	}
 	
 	@Test

@@ -32,7 +32,7 @@ public class PoderController {
 		
 		final List<Poder> resultFromDB = servicio.listarPoderes();
 		
-		resultFromDB.forEach(PoderDTO -> result.add(convertToDTO(PoderDTO)));
+		resultFromDB.forEach(poderDTO -> result.add(convertToDTO(poderDTO)));
 		
 		return result;
 	}

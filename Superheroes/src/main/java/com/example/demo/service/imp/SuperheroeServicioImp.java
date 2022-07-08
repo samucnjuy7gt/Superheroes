@@ -1,5 +1,7 @@
 package com.example.demo.service.imp;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,14 +24,14 @@ import com.example.demo.service.SuperheroeUniversoServicio;
 @Service
 public class SuperheroeServicioImp implements SuperheroeServicio{
 	
+	//Implementacion Hibernate
+	//@Autowired private SuperheroeRepositorioHibernate superheroeRepositorioHibernate;
+	
 	//Implementacion CRUD
 	@Autowired private SuperheroeRepositorio superheroeRepositorio;
+	
 	@Autowired private SuperheroeUniversoServicio sus;
 	@Autowired private SuperheroePoderServicio spc;
-	
-	//Implementacion Hibernate
-	//@Autowired
-	//private SuperheroeRepositorioHibernate superheroeRepositorioHibernate;
 	
 	static final String MENSAJE = "No se ha encontrado el superheroe con el id ";
 
@@ -45,7 +47,7 @@ public class SuperheroeServicioImp implements SuperheroeServicio{
 	@Override
 	public Superheroe buscarSuperheroe(Integer id) throws ResourceNotFoundException{
 		//Implementacion Hibernate
-		//return superheroeRepositorio.findById(id)
+		//return superheroeRepositorioHibernate.findById(id)
 				//.orElseThrow(() -> new ResourceNotFoundException(MENSAJE));
 		
 		//Implementacion CURD
@@ -55,7 +57,7 @@ public class SuperheroeServicioImp implements SuperheroeServicio{
 
 	@Override
 	public List<Superheroe> buscarSuperheroeNombre(String nombre) {
-		
+		//Implementacion CRUD && Hibernate
 		List<Superheroe> resultado = new ArrayList<>();
 		List<Superheroe> supers = listarSuperheroes();
 		supers.forEach(s -> {
@@ -68,9 +70,9 @@ public class SuperheroeServicioImp implements SuperheroeServicio{
 	}
 
 	@Override
-	public Superheroe crearSuperheroe(Superheroe superheroe, List<Poder> poderes) throws ResourceNotFoundException {
+	public Superheroe crearSuperheroe(Superheroe superheroe, List<Poder> poderes) throws ResourceNotFoundException {	
 		//Implementacion Hibernate
-		//return superheroeRepositorioHibernate.save(superheroe);
+		//boolean is = superheroeRepositorioHibernate.findById(superheroe.getId()).isPresent();
 		
 		//Implementacion CRUD
 		boolean is = superheroeRepositorio.findById(superheroe.getId()).isPresent();
@@ -80,6 +82,10 @@ public class SuperheroeServicioImp implements SuperheroeServicio{
 			s = actualizarSuperheroe(superheroe.getId(), superheroe);
 		}
 		else {
+			//Implementacion Hibernate
+			//s = superheroeRepositorioHibernate.save(superheroe);
+			
+			//Implementacion CRUD
 			s = superheroeRepositorio.save(superheroe);
 			
 			SuperheroeUniverso su = new SuperheroeUniverso(s, s.getUniverso());
@@ -99,10 +105,6 @@ public class SuperheroeServicioImp implements SuperheroeServicio{
 		//Implementacion Hibernate
 		//Superheroe superH = superheroeRepositorioHibernate.findById(id)
 				//.orElseThrow(() -> new ResourceNotFoundException(MENSAJE + id));
-		//superH.setNombre(superheroe.getNombre());
-		//superH.setVivo(superheroe.isVivo());
-		
-		//return superheroeRepositorioHibernate.save(superH);
 		
 		//Implementacion CRUD
 		Superheroe superH = superheroeRepositorio.findById(id)
@@ -111,8 +113,11 @@ public class SuperheroeServicioImp implements SuperheroeServicio{
 		superH.setNombre(superheroe.getNombre());
 		superH.setVivo(superheroe.isVivo());
 		
-		return superheroeRepositorio.save(superH);
+		//Implementacion Hibernate
+		//return superheroeRepositorioHibernate.save(superH);
 		
+		//Implementacion CRUD
+		return superheroeRepositorio.save(superH);
 	}
 
 	@Override
@@ -120,8 +125,6 @@ public class SuperheroeServicioImp implements SuperheroeServicio{
 		//Implementacion Hibernate
 		//Superheroe superH = superheroeRepositorioHibernate.findById(id)
 				//.orElseThrow(() -> new ResourceNotFoundException(MENSAJE + id));
-		
-		//superheroeRepositorioHibernate.delete(superH);
 		
 		//Implementacion CRUD
 		Superheroe superH = superheroeRepositorio.findById(id)
@@ -135,7 +138,8 @@ public class SuperheroeServicioImp implements SuperheroeServicio{
 			try {
 				spc.eliminarSuperheroePoder(spk);
 			} catch (ResourceNotFoundException e) {
-				System.out.println(e.getMessage());
+				Logger logger = Logger.getLogger("Logger");
+				logger.log(Level.SEVERE, e.getMessage());
 			}
 		});
 		
@@ -143,7 +147,10 @@ public class SuperheroeServicioImp implements SuperheroeServicio{
 		
 		superH.setPoderes(l);
 		
+		//Implementacion Hibernate
+		//superheroeRepositorioHibernate.delete(superH);
 		
+		//Implementacion CRUD
 		superheroeRepositorio.delete(superH);
 	}
 
@@ -153,16 +160,16 @@ public class SuperheroeServicioImp implements SuperheroeServicio{
 		//Superheroe superH = superheroeRepositorioHibernate.findById(id)
 				//.orElseThrow(() -> new ResourceNotFoundException(MENSAJE + id));
 		
-		//superheroe.setVivo(false);
-		
-		//superheroeRepositorioHibernate.save(superH);
-		
 		//Implementacion CRUD
 		Superheroe superheroe = superheroeRepositorio.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException(MENSAJE + id));
 		
 		superheroe.setVivo(false);
 		
+		//Implementacion Hibernate
+		//return superheroeRepositorioHibernate.save(superheroe);
+		
+		//Implementacion CRUD
 		return superheroeRepositorio.save(superheroe);
 	}
 
@@ -171,17 +178,17 @@ public class SuperheroeServicioImp implements SuperheroeServicio{
 		//Implementacion Hibernate
 		//Superheroe superH = superheroeRepositorioHibernate.findById(id)
 				//.orElseThrow(() -> new ResourceNotFoundException(MENSAJE + id));
-		
-		//superheroe.setVivo(true);
-		
-		//superheroeRepositorioHibernate.save(superH);
-		
+
 		//Implementacion CRUD
 		Superheroe superheroe = superheroeRepositorio.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException(MENSAJE + id));
 		
 		superheroe.setVivo(true);
 		
+		//Implementacion Hibernate
+		//return superheroeRepositorioHibernate.save(superheroe);
+				
+		//Implementacion CRUD
 		return superheroeRepositorio.save(superheroe);
 	}
 }

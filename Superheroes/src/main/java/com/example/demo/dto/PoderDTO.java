@@ -6,6 +6,8 @@ import com.example.demo.model.Poder;
 
 public class PoderDTO implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private String nombre;
 	

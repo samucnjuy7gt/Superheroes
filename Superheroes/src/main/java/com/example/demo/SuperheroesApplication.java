@@ -30,7 +30,6 @@ public class SuperheroesApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("========================================");
 		
 		Universo u1 = new Universo(1, "The Boys");
 		Universo u2 = new Universo(2, "DC");

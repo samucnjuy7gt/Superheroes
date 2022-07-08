@@ -7,12 +7,11 @@ import com.example.demo.model.Superheroe;
 
 public interface SuperheroeRepositorioHibernate {
 
-	//Pasar un String por parametro con el nombre de la tabla
 	List<Superheroe> findAll();
 	
 	Optional<Superheroe> findById(Integer id);
 	
-	Superheroe save(Superheroe objeto);
+	Superheroe save(Superheroe superheroe);
 	
-	void delete(Superheroe objeto);
+	void delete(Superheroe superheroe);
 }

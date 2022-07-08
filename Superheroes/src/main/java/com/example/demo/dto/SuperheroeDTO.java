@@ -7,6 +7,8 @@ import com.example.demo.model.Superheroe;
 
 public class SuperheroeDTO implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private String nombre;
 	private boolean vivo;
