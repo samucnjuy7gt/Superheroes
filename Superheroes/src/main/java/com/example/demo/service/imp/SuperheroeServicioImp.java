@@ -55,7 +55,16 @@ public class SuperheroeServicioImp implements SuperheroeServicio{
 
 	@Override
 	public List<Superheroe> buscarSuperheroeNombre(String nombre) {
-		return null;
+		
+		List<Superheroe> resultado = new ArrayList<>();
+		List<Superheroe> supers = listarSuperheroes();
+		supers.forEach(s -> {
+			if(s.getNombre().contains(nombre)) {
+				resultado.add(s);
+			}
+		});
+		
+		return resultado;
 	}
 
 	@Override
@@ -86,7 +95,7 @@ public class SuperheroeServicioImp implements SuperheroeServicio{
 	}
 	
 	@Override
-	public Superheroe actualizarSuperheroe(Integer id, Superheroe superheroe) throws ResourceNotFoundException{
+	public Superheroe actualizarSuperheroe(Integer id, Superheroe superheroe) throws ResourceNotFoundException {
 		//Implementacion Hibernate
 		//Superheroe superH = superheroeRepositorioHibernate.findById(id)
 				//.orElseThrow(() -> new ResourceNotFoundException(MENSAJE + id));
@@ -107,7 +116,7 @@ public class SuperheroeServicioImp implements SuperheroeServicio{
 	}
 
 	@Override
-	public void eliminarSuperheroe(Integer id) throws ResourceNotFoundException{
+	public void eliminarSuperheroe(Integer id) throws ResourceNotFoundException {
 		//Implementacion Hibernate
 		//Superheroe superH = superheroeRepositorioHibernate.findById(id)
 				//.orElseThrow(() -> new ResourceNotFoundException(MENSAJE + id));
@@ -139,7 +148,7 @@ public class SuperheroeServicioImp implements SuperheroeServicio{
 	}
 
 	@Override
-	public Superheroe matarSuperheroe(Integer id) throws ResourceNotFoundException{
+	public Superheroe matarSuperheroe(Integer id) throws ResourceNotFoundException {
 		//Implementacion Hibernate
 		//Superheroe superH = superheroeRepositorioHibernate.findById(id)
 				//.orElseThrow(() -> new ResourceNotFoundException(MENSAJE + id));

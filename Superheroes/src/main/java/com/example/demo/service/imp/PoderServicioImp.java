@@ -81,18 +81,6 @@ public class PoderServicioImp implements PoderServicio{
 			}
 		});
 		
-		//u.getSuperheroes().forEach(s -> {
-		//	try {
-		//		ss.eliminarSuperheroe(s.getSuperheroe().getId());
-		//	} catch (ResourceNotFoundException e) {
-		//		System.out.println(e.getMessage());
-		//	}
-		//});
-		//
-		//List<SuperheroeUniverso> l = new ArrayList<>();
-		//
-		//u.setSuperheroes(l);
-		
 		poderRepositorio.delete(p);
 	}
 

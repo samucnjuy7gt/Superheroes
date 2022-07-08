@@ -10,7 +10,7 @@ public interface SuperheroeUniversoServicio {
 
 	List<SuperheroeUniverso> listarSuperheroeUniverso();
 	
-	SuperheroeUniverso buscarSuperheroeUnverso(SuperheroeUniversoKey id) throws ResourceNotFoundException;
+	SuperheroeUniverso buscarSuperheroeUniverso(SuperheroeUniversoKey id) throws ResourceNotFoundException;
 	
 	SuperheroeUniverso crearSuperheroeUniverso(SuperheroeUniverso superheroeUniverso);
 	

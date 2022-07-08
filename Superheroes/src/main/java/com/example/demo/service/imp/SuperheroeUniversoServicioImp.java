@@ -25,7 +25,7 @@ public class SuperheroeUniversoServicioImp implements SuperheroeUniversoServicio
 	}
 
 	@Override
-	public SuperheroeUniverso buscarSuperheroeUnverso(SuperheroeUniversoKey id) throws ResourceNotFoundException {
+	public SuperheroeUniverso buscarSuperheroeUniverso(SuperheroeUniversoKey id) throws ResourceNotFoundException {
 		return sur.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException(MENSAJE));
 	}

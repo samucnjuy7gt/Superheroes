@@ -64,8 +64,6 @@ public class SuperheroesApplication implements CommandLineRunner{
 		List<Poder> poderes3 = new ArrayList<>();
 		poderes3.add(p2);
 		
-		System.out.println("ID Translucido antes de crear: " + s3.getId());
-		
 		s1 = superheroeServicio.crearSuperheroe(s1, poderes1);
 		s2 = superheroeServicio.crearSuperheroe(s2, poderes2);
 		s3 = superheroeServicio.crearSuperheroe(s3, poderes3);
@@ -74,18 +72,21 @@ public class SuperheroesApplication implements CommandLineRunner{
 		System.out.println(superheroeServicio.buscarSuperheroe(s2.getId()).getUniverso().getSuperheroes().size());
 		System.out.println(superheroeServicio.buscarSuperheroe(s3.getId()).getUniverso().getSuperheroes().size());
 		
-		System.out.println("ID Translucido antes de borrar: " + s3.getId());
-		
-		superheroeServicio.eliminarSuperheroe(superheroeServicio.buscarSuperheroe(s3.getId()).getId());
-		
-		universoServicio.eliminarUniverso(u2.getId());
-		
-		poderServicio.eliminarPoder(superheroeServicio.buscarSuperheroe(s1.getId()).getPoderes().get(1).getPoder().getId());
-		
-		List<SuperheroePoder> ps1 = superheroeServicio.buscarSuperheroe(s1.getId()).getPoderes();
-		for(SuperheroePoder pAux: ps1){
-			System.out.println("Poder de " + s1.getNombre() + " " + pAux.getPoder().getNombre());
+		List<Superheroe> supers = superheroeServicio.buscarSuperheroeNombre("n");
+		for(Superheroe pAux: supers){
+			System.out.println("Superheroes que contienen n: " + pAux.getNombre());
 		}
+		
+		//superheroeServicio.eliminarSuperheroe(superheroeServicio.buscarSuperheroe(s3.getId()).getId());
+		
+		//universoServicio.eliminarUniverso(u2.getId());
+		
+		//poderServicio.eliminarPoder(superheroeServicio.buscarSuperheroe(s1.getId()).getPoderes().get(1).getPoder().getId());
+		
+		//List<SuperheroePoder> ps1 = superheroeServicio.buscarSuperheroe(s1.getId()).getPoderes();
+		//for(SuperheroePoder pAux: ps1){
+		//	System.out.println("Poder de " + s1.getNombre() + " " + pAux.getPoder().getNombre());
+		//}
 		
 		//List<SuperheroePoder> ps2 = superheroeServicio.buscarSuperheroe(s2.getId()).getPoderes();
 		//for(SuperheroePoder pAux: ps2){
