@@ -103,16 +103,4 @@ public class SuperheroeController {
 		
 		return ResponseEntity.noContent().build();
 	}
-	
-	@PutMapping("/superheroe/{id}")
-	public ResponseEntity<SuperheroeDTO> matarSuperheroe(@PathVariable(value = "id") Integer superheroeId) throws ResourceNotFoundException{
-		Superheroe s = servicio.matarSuperheroe(superheroeId);
-		return ResponseEntity.ok(convertToDTO(s));
-	}
-	
-	@PutMapping("/superheroe/{id}")
-	public ResponseEntity<SuperheroeDTO> revivirSuperheroe(@PathVariable(value = "id") Integer superheroeId) throws ResourceNotFoundException{
-		Superheroe s = servicio.revivirSuperheroe(superheroeId);
-		return ResponseEntity.ok(convertToDTO(s));
-	}
 }
